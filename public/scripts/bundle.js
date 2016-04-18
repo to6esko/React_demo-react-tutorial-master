@@ -27,6 +27,26 @@ var CommentBox = function (_React$Component) {
     }
 
     _createClass(CommentBox, [{
+        key: 'getInitialState',
+        value: function getInitialState() {
+            return { data: [] };
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            $.ajax({
+                url: this.props.url,
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    this.setState({ data: data });
+                }.bind(this),
+                error: function (xhr, status, err) {
+                    console.error(this.props.url, status, err.toString());
+                }.bind(this)
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
