@@ -11,12 +11,9 @@ class CommentBox extends React.Component {
     constructor() {
         super();
     }
-    getInitialState() {
-    return {data: []};
-  }
-  
-  componentDidMount() {
-    $.ajax({
+    
+    loadCommentsFromServer(){
+          $.ajax({
       url: this.props.url,
       dataType: 'json',
       cache: false,
@@ -27,6 +24,14 @@ class CommentBox extends React.Component {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+    }
+    getInitialState() {
+    return {data: []};
+  }
+  
+  componentDidMount() {
+   this.loadCommentsFromServer();
+   setInterval(this.loadCommentsFromServer,this.props.pollInrerval);
   }
     
 
@@ -103,4 +108,4 @@ var data = [
     { id: 2, author: 'Penka Penkova', text: 'This is a comment too.' }
 ]
 
-render(<CommentBox data={data}/>, document.getElementById('content'));
+render(<CommentBox url="/api/comments" pollInrerval={2000}/>, document.getElementById('content'));

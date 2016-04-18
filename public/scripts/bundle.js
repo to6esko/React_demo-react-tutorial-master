@@ -27,13 +27,8 @@ var CommentBox = function (_React$Component) {
     }
 
     _createClass(CommentBox, [{
-        key: 'getInitialState',
-        value: function getInitialState() {
-            return { data: [] };
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
+        key: 'loadCommentsFromServer',
+        value: function loadCommentsFromServer() {
             $.ajax({
                 url: this.props.url,
                 dataType: 'json',
@@ -45,6 +40,17 @@ var CommentBox = function (_React$Component) {
                     console.error(this.props.url, status, err.toString());
                 }.bind(this)
             });
+        }
+    }, {
+        key: 'getInitialState',
+        value: function getInitialState() {
+            return { data: [] };
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.loadCommentsFromServer();
+            setInterval(this.loadCommentsFromServer, this.props.pollInrerval);
         }
     }, {
         key: 'render',
@@ -161,7 +167,7 @@ var Comment = function (_React$Component4) {
 
 var data = [{ id: 1, author: 'Todor Krasev', text: 'This is a comment.' }, { id: 2, author: 'Penka Penkova', text: 'This is a comment too.' }];
 
-(0, _reactDom.render)(_react2.default.createElement(CommentBox, { data: data }), document.getElementById('content'));
+(0, _reactDom.render)(_react2.default.createElement(CommentBox, { url: '/api/comments', pollInrerval: 2000 }), document.getElementById('content'));
 
 },{"react":166,"react-dom":30}],2:[function(require,module,exports){
 (function (process){
