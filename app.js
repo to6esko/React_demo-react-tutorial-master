@@ -11,29 +11,30 @@ class CommentBox extends React.Component {
     constructor() {
         super();
     }
-    
-    loadCommentsFromServer(){
-          $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+
+    loadCommentsFromServer() {
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                this.setState({ data: data });
+            }.bind(this),
+            error: function (xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
     }
+
     getInitialState() {
-    return {data: []};
-  }
-  
-  componentDidMount() {
-   this.loadCommentsFromServer();
-   setInterval(this.loadCommentsFromServer,this.props.pollInrerval);
-  }
-    
+        return { data: [] };
+    }
+
+    componentDidMount() {
+        this.loadCommentsFromServer();
+        setInterval(this.loadCommentsFromServer, this.props.pollInrerval);
+    }
+
 
     render() {
         return (
@@ -52,7 +53,7 @@ class CommentList extends React.Component {
         super();
     }
     render() {
-       let commentNodes = this.props.data.map(function (comment) {
+        const commentNodes = this.props.data.map(function (comment) {
             return (
                 <Comment  author = { comment.author }  key = { comment.id } >
                     { comment.text }
