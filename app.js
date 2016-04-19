@@ -222,6 +222,7 @@ class CommentForm extends React.Component {
         this.props.onCommentSubmit({ author: author, text: text });
         this.setState({ author: '', text: '' });
     }
+    
     handleAuthorChange(event) {
         this.setState({ author: event.target.value });
     }
