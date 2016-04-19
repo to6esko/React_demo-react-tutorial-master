@@ -1,4 +1,120 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+/*
+"use strict";
+import React from 'react';
+import {
+    render
+}
+from 'react-dom';
+
+
+
+class CommentBox extends React.Component {
+    constructor() {
+        super();
+    }
+
+    getInitialState() {
+        return { data: [] };
+    }
+    
+    loadCommentsFromServer() {
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                this.setState({ data: data });
+            }.bind(this),
+            error: function (xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    }
+
+    componentDidMount() {
+        this.loadCommentsFromServer();
+        setInterval(this.loadCommentsFromServer, this.props.pollInrerval);
+    }
+
+
+    render() {
+        return (
+            <div className='commentBox'>
+                <h1>Comments</h1>
+                <CommentList data={this.props.data}/>
+                <CommentForm/>
+                Hello, world !
+            </div>
+        );
+    }
+};
+
+class CommentList extends React.Component {
+    constructor() {
+        super();
+    }
+    render() {
+        let commentNodes = this.props.data.map(function (comment) {
+            return (
+                <Comment  author = { comment.author }  key = { comment.id } >
+                    { comment.text }
+                </Comment>
+            );
+        });
+
+        return (
+            <div  className = "commentList" >
+                { commentNodes }
+            </div>
+        );
+    }
+
+};
+
+
+class CommentForm extends React.Component {
+    constructor() {
+        super();
+    }
+    render() {
+        return (
+            <div className='commentForm'>
+            </div>
+        );
+    }
+};
+
+class Comment extends React.Component {
+    constructor() {
+        super();
+    }
+    rawMarkup() {
+        var rawMarkup = marked(this.props.children.toString(),
+            { sanitize: true });
+        return { __html: rawMarkup }
+    }
+    render() {
+        return (
+            <div className='comment'>
+                <h3 className='commentAuthor'>
+                    {this.props.author}
+                </h3>
+                <span dangerouslySetInnerHTML={this.rawMarkup() }/>
+            </div>
+        );
+    }
+};
+
+var data = [
+    { id: 1, author: 'Todor Krasev', text: 'This is a comment.' },
+    { id: 2, author: 'Penka Penkova', text: 'This is a comment too.' }
+]
+
+render(<CommentBox url="/api/comments" pollInrerval={2000}/>, document.getElementById('content'));
+*/
+
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -23,22 +139,49 @@ var CommentBox = function (_React$Component) {
     function CommentBox() {
         _classCallCheck(this, CommentBox);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(CommentBox).call(this));
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CommentBox).call(this));
+
+        _this.state = { data: [] };
+        return _this;
     }
 
     _createClass(CommentBox, [{
         key: 'loadCommentsFromServer',
         value: function loadCommentsFromServer() {
+            var _this2 = this;
+
             $.ajax({
                 url: this.props.url,
                 dataType: 'json',
                 cache: false,
-                success: function (data) {
-                    this.setState({ data: data });
-                }.bind(this),
-                error: function (xhr, status, err) {
-                    console.error(this.props.url, status, err.toString());
-                }.bind(this)
+                success: function success(data) {
+                    _this2.setState({ data: data });
+                },
+                error: function error(xhr, status, err) {
+                    console.error(_this2.props.url, status, err.toString());
+                }
+            });
+        }
+    }, {
+        key: 'handleCommentSubmit',
+        value: function handleCommentSubmit(comment) {
+            var _this3 = this;
+
+            var comments = this.state.data;
+            comment.id = Date.now();
+            var newComments = comments.concat([comment]);
+            this.setState({ data: newComments });
+            $.ajax({
+                url: this.props.url,
+                dataType: 'json',
+                type: 'Post',
+                data: comment,
+                success: function success(data) {
+                    _this3.setState({ data: data });
+                },
+                error: function error(xhr, status, err) {
+                    console.error(_this3.props.url, status, err.toString());
+                }
             });
         }
     }, {
@@ -50,7 +193,7 @@ var CommentBox = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.loadCommentsFromServer();
-            setInterval(this.loadCommentsFromServer, this.props.pollInrerval);
+            setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInrerval);
         }
     }, {
         key: 'render',
@@ -63,8 +206,8 @@ var CommentBox = function (_React$Component) {
                     null,
                     'Comments'
                 ),
-                _react2.default.createElement(CommentList, { data: this.props.data }),
-                _react2.default.createElement(CommentForm, null),
+                _react2.default.createElement(CommentList, { data: this.state.data }),
+                _react2.default.createElement(CommentForm, { onCommentSubmit: this.handleCommentSubmit.bind(this) }),
                 'Hello, world !'
             );
         }
@@ -118,9 +261,42 @@ var CommentForm = function (_React$Component3) {
     }
 
     _createClass(CommentForm, [{
+        key: 'getInitialState',
+        value: function getInitialState() {
+            return { author: '', text: '' };
+        }
+    }, {
+        key: 'handleSubmit',
+        value: function handleSubmit(event) {
+            event.preventDefault();
+            var author = this.state.author.trim();
+            var text = this.state.text.trim();
+            if (!text || !author) {
+                return;
+            }
+            this.props.onCommentSubmit({ author: author, text: text });
+            this.setState({ author: '', text: '' });
+        }
+    }, {
+        key: 'handleAuthorChange',
+        value: function handleAuthorChange(event) {
+            this.setState({ author: event.target.value });
+        }
+    }, {
+        key: 'handleTextChange',
+        value: function handleTextChange(event) {
+            this.setState({ text: event.target.value });
+        }
+    }, {
         key: 'render',
         value: function render() {
-            return _react2.default.createElement('div', { className: 'commentForm' });
+            return _react2.default.createElement(
+                'form',
+                { className: 'commentForm', onSubmit: this.handleSubmit.bind(this) },
+                _react2.default.createElement('input', { className: 'your-name', type: 'text', placeholder: 'Your name', value: this.props.author, onChange: this.handleAuthorChange.bind(this) }),
+                _react2.default.createElement('textarea', { className: 'form-control', type: 'text', placeholder: 'Say something...', value: this.props.text, onChange: this.handleTextChange.bind(this) }),
+                _react2.default.createElement('input', { className: 'btn-submit', type: 'submit', value: 'Post' })
+            );
         }
     }]);
 
@@ -165,9 +341,7 @@ var Comment = function (_React$Component4) {
 
 ;
 
-var data = [{ id: 1, author: 'Todor Krasev', text: 'This is a comment.' }, { id: 2, author: 'Penka Penkova', text: 'This is a comment too.' }];
-
-(0, _reactDom.render)(_react2.default.createElement(CommentBox, { url: '/api/comments', pollInrerval: 2000 }), document.getElementById('content'));
+(0, _reactDom.render)(_react2.default.createElement(CommentBox, { url: '/api/comments', pollInrerval: 10000 }), document.getElementById('content'));
 
 },{"react":166,"react-dom":30}],2:[function(require,module,exports){
 (function (process){
