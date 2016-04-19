@@ -119,8 +119,8 @@ class CommentForm extends React.Component {
     render() {
         return (
             <form className='commentForm' onSubmit={this.handleSubmit.bind(this) } >
-                <input className='your-name' type='text' placeholder='Your name' value={this.props.author} onChange={this.handleAuthorChange.bind(this) }/>
-                <textarea className='form-control' type='text' placeholder='Say something...' value={this.props.text} onChange={this.handleTextChange.bind(this) }/>
+                <input className='your-name' type='text' placeholder='Your name' value={this.state.author} onChange={this.handleAuthorChange.bind(this) }/>
+                <textarea className='form-control' type='text' placeholder='Say something...' value={this.state.text} onChange={this.handleTextChange.bind(this) }/>
                 <input className='btn-submit' type='submit' value='Post'/>
             </form>
         );
