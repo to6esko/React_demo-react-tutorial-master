@@ -2,13 +2,7 @@
 
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-npm install babel-preset-es2015 --save-dev
-npm install browserify babelify
-npm install babel-polyfill
-npm install babel-plugin-proxy --save-dev
-npm i --save-dev babel-loader babel-preset-react react react-dom -S
-npm install marked --save
-npm install ajax
+npm install
 
 echo '{ "presets": ["es2015", "react"] }' > .babelrc
 

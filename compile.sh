@@ -1,1 +1,1 @@
- ./node_modules/browserify/bin/cmd.js app.js  -t babelify --outfile public/scripts/bundle.js
+ ./node_modules/browserify/bin/cmd.js app.js  -t babelify --outfile bundle.js
