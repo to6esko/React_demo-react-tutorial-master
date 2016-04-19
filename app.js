@@ -151,4 +151,4 @@ class Comment extends React.Component {
 
 
 
-render(<CommentBox url="/api/comments" pollInrerval={10000}/>, document.getElementById('content'));
+render(<CommentBox url="/api/comments" pollInrerval={2000}/>, document.getElementById('content'));
