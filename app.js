@@ -12,10 +12,8 @@ from 'react-dom';
 class CommentBox extends React.Component {
     constructor() {
         super();
-    }
-
-    getInitialState() {
-        return { data: [] };
+        
+        this.state = { data: [] };
     }
     
     loadCommentsFromServer() {
@@ -130,8 +128,6 @@ class CommentBox extends React.Component {
         this.state = { data: [] };
     }
 
-
-
     loadCommentsFromServer() {
         $.ajax({
             url: this.props.url,
@@ -163,11 +159,6 @@ class CommentBox extends React.Component {
                 console.error(this.props.url, status, err.toString());
             }
         });
-    }
-
-
-    getInitialState() {
-        return { data: [] };
     }
 
     componentDidMount() {
@@ -217,10 +208,10 @@ class CommentList extends React.Component {
 class CommentForm extends React.Component {
     constructor() {
         super();
+        
+        this.state = { author: '', text: '' };
     }
-    getInitialState() {
-        return { author: '', text: '' };
-    }
+    
     handleSubmit(event) {
         event.preventDefault();
         var author = this.state.author.trim();

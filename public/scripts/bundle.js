@@ -13,10 +13,8 @@ from 'react-dom';
 class CommentBox extends React.Component {
     constructor() {
         super();
-    }
-
-    getInitialState() {
-        return { data: [] };
+        
+        this.state = { data: [] };
     }
     
     loadCommentsFromServer() {
@@ -185,11 +183,6 @@ var CommentBox = function (_React$Component) {
             });
         }
     }, {
-        key: 'getInitialState',
-        value: function getInitialState() {
-            return { data: [] };
-        }
-    }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.loadCommentsFromServer();
@@ -257,15 +250,13 @@ var CommentForm = function (_React$Component3) {
     function CommentForm() {
         _classCallCheck(this, CommentForm);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(CommentForm).call(this));
+        var _this5 = _possibleConstructorReturn(this, Object.getPrototypeOf(CommentForm).call(this));
+
+        _this5.state = { author: '', text: '' };
+        return _this5;
     }
 
     _createClass(CommentForm, [{
-        key: 'getInitialState',
-        value: function getInitialState() {
-            return { author: '', text: '' };
-        }
-    }, {
         key: 'handleSubmit',
         value: function handleSubmit(event) {
             event.preventDefault();
