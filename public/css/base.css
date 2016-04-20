@@ -1,3 +1,7 @@
+body{
+  margin: 0;
+  padding:0;
+}
 body {
   background: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -6,6 +10,7 @@ body {
   margin: 0;
   padding: 30px;
 }
+ 
 
 a {
   color: #4183c4;
@@ -59,4 +64,38 @@ p, ul {
 
 ul {
   padding-left: 30px;
+}
+
+.commentForm {
+  position: absolute;
+  float: center;
+  width: 450px;
+  height: 450px;
+  left: 250px;
+  right:50px;
+  border:1px solid black;
+}
+.your-name{
+  position: absolute;
+  top:10px;
+  left:20px;
+  width: 395px;
+  padding-left: 15px;
+}
+.form-control{
+  position: relative;
+  top:35px;
+  left:20px;
+  width: 400px;
+  height: 300px;
+  padding-left: 10px;
+  padding-top:15px;
+}
+.btn-submit{
+  position: relative;
+  float: right;
+  margin-top:40px;
+  margin-right: 10px;
+  text-align: center;
+  
 }

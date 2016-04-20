@@ -54,10 +54,8 @@ class CommentBox extends React.Component {
     render() {
         return (
             <div className='commentBox'>
-                <h1>Comments</h1>
                 <CommentList data={this.state.data}/>
                 <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this) }/>
-                Hello, world !
             </div>
         );
     }
@@ -118,7 +116,9 @@ class CommentForm extends React.Component {
 
     render() {
         return (
+            
             <form className='commentForm' onSubmit={this.handleSubmit.bind(this) } >
+                <h2>Comments</h2>
                 <input className='your-name' type='text' placeholder='Your name' value={this.state.author} onChange={this.handleAuthorChange.bind(this) }/>
                 <textarea className='form-control' type='text' placeholder='Say something...' value={this.state.text} onChange={this.handleTextChange.bind(this) }/>
                 <input className='btn-submit' type='submit' value='Post'/>
@@ -143,7 +143,7 @@ class Comment extends React.Component {
                 <h3 className='commentAuthor'>
                     {this.props.author}
                 </h3>
-                <span dangerouslySetInnerHTML={this.rawMarkup() }/>
+                <span className='text-content' dangerouslySetInnerHTML={this.rawMarkup() }/>
             </div>
         );
     }
