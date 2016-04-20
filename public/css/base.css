@@ -32,7 +32,7 @@ code {
 }
 
 h1, h2, h3, h4 {
-  font-weight: bold;
+  font-weight: normal;
   margin: 0 0 15px;
   padding: 0;
 }
@@ -73,6 +73,7 @@ ul {
   height: 450px;
   left: 250px;
   right:50px;
+  bottom: 50px;
   border:1px solid black;
 }
 .your-name{
@@ -98,4 +99,27 @@ ul {
   margin-right: 10px;
   text-align: center;
   
+}
+
+.commentList{
+  border:1px solid black;
+}
+.commentAuthor{
+  position: static;
+  float: left;
+  text-align: center;
+  font-family: italic;
+  font-weight: bold;
+  font-size:1.2em;
+  border: 1px solid black;
+  padding: 10px;
+  
+}
+
+.comment {
+  position: relative;
+  padding: 10px;
+  padding-left: 25px;
+  margin-left: 10px;
+  border: 1px solid black''
 }

@@ -81,6 +81,11 @@ var CommentBox = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'commentBox' },
+                _react2.default.createElement(
+                    'h2',
+                    null,
+                    'Comments'
+                ),
                 _react2.default.createElement(CommentList, { data: this.state.data }),
                 _react2.default.createElement(CommentForm, { onCommentSubmit: this.handleCommentSubmit.bind(this) })
             );
@@ -165,11 +170,6 @@ var CommentForm = function (_React$Component3) {
             return _react2.default.createElement(
                 'form',
                 { className: 'commentForm', onSubmit: this.handleSubmit.bind(this) },
-                _react2.default.createElement(
-                    'h2',
-                    null,
-                    'Comments'
-                ),
                 _react2.default.createElement('input', { className: 'your-name', type: 'text', placeholder: 'Your name', value: this.state.author, onChange: this.handleAuthorChange.bind(this) }),
                 _react2.default.createElement('textarea', { className: 'form-control', type: 'text', placeholder: 'Say something...', value: this.state.text, onChange: this.handleTextChange.bind(this) }),
                 _react2.default.createElement('input', { className: 'btn-submit', type: 'submit', value: 'Post' })
@@ -204,7 +204,7 @@ var Comment = function (_React$Component4) {
                 'div',
                 { className: 'comment' },
                 _react2.default.createElement(
-                    'h3',
+                    'div',
                     { className: 'commentAuthor' },
                     this.props.author
                 ),
