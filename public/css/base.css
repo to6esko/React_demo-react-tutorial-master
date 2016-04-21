@@ -2,6 +2,8 @@ body{
   margin: 0;
   padding:0;
 }
+
+/*
 body {
   background: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -65,23 +67,57 @@ p, ul {
 ul {
   padding-left: 30px;
 }
+*/
+
+
+.comment{
+  position: static;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    width: 80%;
+    height: 30%;
+}
+.commentAuthor{
+  position: relative;
+  display: inline-block;
+  border:1px solid black;
+  width: 15%;
+  height:100px;
+  margin: 5px;
+  text-align: left;
+  padding: 5px 0px 0px 15px;
+ 
+}
+.text-content{
+  position: relative;
+  top:15px;
+  display:inline-block;
+  width: 80%;
+  height: 100px;
+   margin-left:10px;
+   border:1px solid black;
+   text-align: left;
+   padding:5px 0px 0px 15px;
+}
 
 .commentForm {
-  position: absolute;
-  float: center;
+  position: relative;
   width: 450px;
   height: 450px;
   left: 250px;
   right:50px;
   bottom: 50px;
+  margin: 100px;
   border:1px solid black;
+  clear: both;
 }
 .your-name{
-  position: absolute;
+  position: relative;
   top:10px;
   left:20px;
-  width: 395px;
-  padding-left: 15px;
+  width: 380px;
+  padding: 15px;
 }
 .form-control{
   position: relative;
@@ -99,27 +135,4 @@ ul {
   margin-right: 10px;
   text-align: center;
   
-}
-
-.commentList{
-  border:1px solid black;
-}
-.commentAuthor{
-  position: static;
-  float: left;
-  text-align: center;
-  font-family: italic;
-  font-weight: bold;
-  font-size:1.2em;
-  border: 1px solid black;
-  padding: 10px;
-  
-}
-
-.comment {
-  position: relative;
-  padding: 10px;
-  padding-left: 25px;
-  margin-left: 10px;
-  border: 1px solid black''
 }

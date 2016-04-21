@@ -12,7 +12,7 @@ class CommentBox extends React.Component {
         super();
         this.state = { data: [] };
     }
-
+   
     loadCommentsFromServer() {
         $.ajax({
             url: this.props.url,
@@ -92,7 +92,6 @@ class CommentList extends React.Component {
 class CommentForm extends React.Component {
     constructor() {
         super();
-        
         this.state = { author: '', text: '' };
     }
     
@@ -123,6 +122,8 @@ class CommentForm extends React.Component {
                 <input className='your-name' type='text' placeholder='Your name' value={this.state.author} onChange={this.handleAuthorChange.bind(this) }/>
                 <textarea className='form-control' type='text' placeholder='Say something...' value={this.state.text} onChange={this.handleTextChange.bind(this) }/>
                 <input className='btn-submit' type='submit' value='Post'/>
+                <input className='btn-photo' type='submit' value='Add Photo'/>
+                <button className='btn-default'>Add Photo</button>
             </form>
         );
     }
