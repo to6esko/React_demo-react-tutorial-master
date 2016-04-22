@@ -85,7 +85,7 @@ ul {
   height: 100px;
   margin: 5px;
   text-align: left;
-  padding: 5px 0px 0px 15px;
+  padding: 5px 10px 5px 5px;
  
 }
 .text-content{
@@ -97,12 +97,12 @@ ul {
    margin-left:10px;
    border:1px solid black;
    text-align: left;
-   padding:5px 0px 0px 15px;
+   padding: 5px 10px 5px 5px;
 }
 
 .commentForm {
   position: relative;
-  width: 450px;
+  width: 32%;
   height: 450px;
   left: 250px;
   right:50px;
@@ -122,7 +122,7 @@ ul {
   position: relative;
   top:35px;
   left:20px;
-  width: 400px;
+  width: 88%;
   height: 300px;
   padding-left: 10px;
   padding-top:15px;
@@ -134,4 +134,12 @@ ul {
   margin-right: 10px;
   text-align: center;
   
+}
+
+.btn-default{
+    position: relative;
+    float: right;
+    margin-top: 40px;
+    margin-right: 10px;
+    text-align: center;
 }
