@@ -76,14 +76,13 @@ ul {
     margin: 5px;
     padding: 5px;
     width: 80%;
-    height: 30%;
 }
 .commentAuthor{
   position: relative;
   display: inline-block;
   border:1px solid black;
   width: 15%;
-  height:100px;
+  height: 100px;
   margin: 5px;
   text-align: left;
   padding: 5px 0px 0px 15px;
@@ -116,7 +115,7 @@ ul {
   position: relative;
   top:10px;
   left:20px;
-  width: 380px;
+  width: 84%;
   padding: 15px;
 }
 .form-control{
