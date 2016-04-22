@@ -2,6 +2,9 @@ body{
   margin: 0;
   padding:0;
 }
+body{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 /*
 body {
@@ -76,29 +79,42 @@ ul {
     margin: 5px;
     padding: 5px;
     width: 80%;
+    height: auto;
+    
+    zoom:1;
 }
+
 .commentAuthor{
   position: relative;
   display: inline-block;
   border:1px solid black;
   width: 15%;
-  height: 100px;
+  min-height: 100px;
+  height: auto;
   margin: 5px;
   text-align: left;
   padding: 5px 10px 5px 5px;
- 
+  
+  word-wrap: break-word;
+  zoom: 1;
 }
+
 .text-content{
   position: relative;
   top:15px;
   display:inline-block;
   width: 80%;
-  height: 100px;
+  min-height: 100px;
+  height: atuto;
    margin-left:10px;
    border:1px solid black;
    text-align: left;
    padding: 5px 10px 5px 5px;
+    word-wrap: break-word;
+    
+   zoom:1;
 }
+
 
 .commentForm {
   position: relative;
@@ -110,15 +126,25 @@ ul {
   margin: 100px;
   border:1px solid black;
   clear: both;
+ 
+  zoom:1;
 }
+
+
+
+
 .your-name{
+  
   position: relative;
   top:10px;
   left:20px;
   width: 84%;
   padding: 15px;
+  
+  zoom: 1;
 }
 .form-control{
+  font-size-adjust: inherit;
   position: relative;
   top:35px;
   left:20px;
@@ -126,6 +152,8 @@ ul {
   height: 300px;
   padding-left: 10px;
   padding-top:15px;
+  
+  zoom:1;
 }
 .btn-submit{
   position: relative;
@@ -134,6 +162,7 @@ ul {
   margin-right: 10px;
   text-align: center;
   
+  zoom:1;
 }
 
 .btn-default{
@@ -142,4 +171,6 @@ ul {
     margin-top: 40px;
     margin-right: 10px;
     text-align: center;
+    
+    zoom:1;
 }
